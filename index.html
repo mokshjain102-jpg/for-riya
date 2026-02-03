@@ -4,27 +4,38 @@
 <meta charset="UTF-8">
 <title>For Riya 💖</title>
 
+<!-- Premium Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+
 <style>
 body{
     margin:0;
     font-family:'Poppins',sans-serif;
-    background:black;
     color:white;
     text-align:center;
     overflow:hidden;
     perspective:1000px;
+
+    /* BACKGROUND IMAGE */
+    background:url("riya.jpg") no-repeat center center fixed;
+    background-size:cover;
 }
 
-canvas{
+/* Dark overlay for cinematic look */
+body::before{
+    content:"";
     position:fixed;
     top:0;
     left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.65);
     z-index:-1;
 }
 
 .page{
     display:none;
-    padding-top:15%;
+    padding-top:12%;
     animation:fade 1.5s ease-in-out;
 }
 
@@ -36,7 +47,7 @@ button{
     padding:15px 35px;
     margin:20px;
     font-size:18px;
-    border:2px solid pink;
+    border:2px solid #ff66ff;
     border-radius:40px;
     background:transparent;
     color:white;
@@ -45,10 +56,10 @@ button{
 }
 
 button:hover{
-    background:pink;
+    background:#ff66ff;
     color:black;
     transform:scale(1.15);
-    box-shadow:0 0 30px pink;
+    box-shadow:0 0 30px #ff66ff;
 }
 
 @keyframes fade{
@@ -56,13 +67,13 @@ button:hover{
     to{opacity:1;transform:scale(1);}
 }
 
-/* 3D GLOWING NAME */
+/* PREMIUM 3D GLOWING NAME */
 .glow3d{
-    font-size:90px;
-    font-weight:bold;
-    letter-spacing:5px;
+    font-family:'Cinzel',serif;
+    font-size:100px;
+    letter-spacing:6px;
     margin-bottom:30px;
-    background:linear-gradient(45deg,#ff00cc,#ff66ff,#ffffff);
+    background:linear-gradient(45deg,#ff00cc,#ff99ff,#ffffff);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     position:relative;
@@ -103,18 +114,18 @@ button:hover{
     from{
         text-shadow:0 0 10px #ff00cc,
                     0 0 20px #ff66ff,
-                    0 0 30px #ffffff;
+                    0 0 40px #ffffff;
     }
     to{
         text-shadow:0 0 20px #ff00cc,
                     0 0 40px #ff66ff,
-                    0 0 60px #ffffff;
+                    0 0 80px #ffffff;
     }
 }
 
 @keyframes rotate3D{
     0%{transform:rotateY(0deg);}
-    50%{transform:rotateY(15deg);}
+    50%{transform:rotateY(12deg);}
     100%{transform:rotateY(0deg);}
 }
 
@@ -122,14 +133,15 @@ button:hover{
     width:70%;
     margin:auto;
     font-size:20px;
-    line-height:1.6;
+    line-height:1.7;
+    background:rgba(0,0,0,0.5);
+    padding:20px;
+    border-radius:15px;
 }
 </style>
 </head>
 
 <body>
-
-<canvas id="bg"></canvas>
 
 <div id="page1" class="page active">
     <h1>Hellooo Riyaaa 💖</h1>
@@ -163,10 +175,9 @@ function nextPage(n){
 function showFinal(){
     nextPage(4);
     typeEffect();
-    fireworks();
 }
 
-/* Typing Effect */
+/* Typing Message */
 const text=`
 Waise toh tujhe dekh ke nervous ho jata hu...
 
@@ -200,53 +211,8 @@ function typeEffect(){
     }
     typing();
 }
-
-/* Star Background */
-const canvas=document.getElementById("bg");
-const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-let stars=[];
-for(let i=0;i<200;i++){
-    stars.push({
-        x:Math.random()*canvas.width,
-        y:Math.random()*canvas.height,
-        radius:Math.random()*2
-    });
-}
-
-function drawStars(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="white";
-    stars.forEach(s=>{
-        ctx.beginPath();
-        ctx.arc(s.x,s.y,s.radius,0,Math.PI*2);
-        ctx.fill();
-    });
-}
-setInterval(drawStars,50);
-
-/* Fireworks */
-function fireworks(){
-    for(let i=0;i<100;i++){
-        let spark=document.createElement("div");
-        spark.style.position="absolute";
-        spark.style.width="5px";
-        spark.style.height="5px";
-        spark.style.background="pink";
-        spark.style.borderRadius="50%";
-        spark.style.top="50%";
-        spark.style.left="50%";
-        spark.style.transition="1s";
-        document.body.appendChild(spark);
-        setTimeout(()=>{
-            spark.style.transform=`translate(${Math.random()*600-300}px, ${Math.random()*600-300}px)`;
-            spark.style.opacity=0;
-        },10);
-    }
-}
 </script>
 
 </body>
 </html>
+
